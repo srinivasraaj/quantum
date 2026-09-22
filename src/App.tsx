@@ -129,6 +129,7 @@ const slides: Slide[] = [
       "Classical Control: A quantum computer still relies on standard, classical computers to control it and read its outputs."
     ],
     type: 'content',
+    image: "/inside.png",
     icon: Cpu
   },
   {
@@ -139,6 +140,7 @@ const slides: Slide[] = [
       "Accessible Coding: You don't need to learn a completely new language; developers can use standard languages like Python to write and run quantum code."
     ],
     type: 'content',
+    image: "/softwareside.png",
     icon: Brain
   },
   {
@@ -177,6 +179,7 @@ const slides: Slide[] = [
       "Tech Giant Backing: IBM, Google, Microsoft, Amazon are investing billions."
     ],
     type: 'content',
+    image: "/marketpotential.png",
     icon: Globe
   },
   {
@@ -276,7 +279,7 @@ export default function App() {
       </header>
 
       {/* Main Slide Content Area */}
-      <main className="relative flex-1 w-full max-w-6xl mx-auto px-6 md:px-8 z-10 overflow-hidden flex flex-col justify-start pt-4 md:pt-8">
+      <main className="relative flex-1 min-h-0 w-full max-w-6xl mx-auto px-4 sm:px-6 md:px-8 z-10 overflow-y-auto flex flex-col justify-start pt-2 sm:pt-4 md:pt-6 pb-6">
         <AnimatePresence initial={false} custom={direction} mode="wait">
           <motion.div
             key={currentSlide}
@@ -289,7 +292,7 @@ export default function App() {
               x: { type: "spring", stiffness: 300, damping: 35 },
               opacity: { duration: 0.25 }
             }}
-            className="w-full max-h-full py-2 md:py-4"
+            className="w-full my-auto py-2"
           >
             {slide.type === 'title' ? (
               <div className="text-center space-y-4 md:space-y-6">
@@ -313,33 +316,33 @@ export default function App() {
                 </div>
               </div>
             ) : slide.type === 'comparison' ? (
-              <div className="space-y-6 md:space-y-8">
+              <div className="space-y-4 md:space-y-5">
                 <div className="flex items-center gap-3">
                   <Icon className="w-6 h-6 md:w-8 md:h-8 text-cyan-700" />
                   <h2 className="text-2xl md:text-4xl font-display font-bold tracking-tight text-slate-900">{slide.title}</h2>
                 </div>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
-                  <div className="glass p-4 md:p-6 rounded-2xl space-y-3 md:space-y-4">
-                    <h3 className="text-lg md:text-xl font-bold text-slate-800 border-b border-slate-200 pb-2">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3.5 md:gap-5">
+                  <div className="glass p-4 md:p-5 rounded-2xl space-y-2.5 md:space-y-3">
+                    <h3 className="text-base md:text-lg font-bold text-slate-800 border-b border-slate-200 pb-2">
                       {slide.comparison?.left.title}
                     </h3>
-                    <ul className="space-y-2 md:space-y-3">
+                    <ul className="space-y-2 md:space-y-2.5">
                       {slide.comparison?.left.items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm md:text-lg leading-relaxed text-slate-800 font-medium">
-                          <span className="w-1 h-1 rounded-full bg-slate-400 mt-2 shrink-0" />
+                        <li key={i} className="flex items-start gap-2 text-sm md:text-base leading-relaxed text-slate-800 font-medium">
+                          <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mt-2 shrink-0" />
                           {item}
                         </li>
                       ))}
                     </ul>
                   </div>
-                  <div className="glass p-4 md:p-6 rounded-2xl space-y-3 md:space-y-4 border-cyan-500/30 bg-cyan-50/50">
-                    <h3 className="text-lg md:text-xl font-bold text-cyan-700 border-b border-cyan-200 pb-2">
+                  <div className="glass p-4 md:p-5 rounded-2xl space-y-2.5 md:space-y-3 border-cyan-500/30 bg-cyan-50/50">
+                    <h3 className="text-base md:text-lg font-bold text-cyan-700 border-b border-cyan-200 pb-2">
                       {slide.comparison?.right.title}
                     </h3>
-                    <ul className="space-y-2 md:space-y-3">
+                    <ul className="space-y-2 md:space-y-2.5">
                       {slide.comparison?.right.items.map((item, i) => (
-                        <li key={i} className="flex items-start gap-2 text-sm md:text-lg leading-relaxed text-slate-900 font-bold">
-                          <span className="w-1 h-1 rounded-full bg-cyan-600 mt-2 shrink-0" />
+                        <li key={i} className="flex items-start gap-2 text-sm md:text-base leading-relaxed text-slate-900 font-bold">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyan-600 mt-2 shrink-0" />
                           {item}
                         </li>
                       ))}
@@ -347,20 +350,20 @@ export default function App() {
                   </div>
                 </div>
                 {slide.content.length > 0 && (
-                  <div className="pt-1">
+                  <div className="pt-0.5">
                     {slide.content.map((p, i) => (
-                      <p key={i} className="text-slate-700 italic font-medium text-sm md:text-base">{p}</p>
+                      <p key={i} className="text-slate-700 italic font-medium text-xs md:text-sm">{p}</p>
                     ))}
                   </div>
                 )}
               </div>
             ) : slide.type === 'grid' ? (
-              <div className="space-y-6 md:space-y-8">
+              <div className="space-y-4 md:space-y-5">
                 <div className="flex items-center gap-3">
                   <Icon className="w-6 h-6 md:w-8 md:h-8 text-cyan-700" />
                   <h2 className="text-2xl md:text-4xl font-display font-bold tracking-tight text-slate-900">{slide.title}</h2>
                 </div>
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-3.5">
                   {slide.content.map((item, i) => {
                     const parts = item.split(': ');
                     const showLabel = parts.length > 1 && (slide.id === 6 || slide.id === 13 || slide.id === 14);
@@ -375,17 +378,17 @@ export default function App() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.03 }}
                         onClick={() => isInteractive && setActiveModal(label?.toLowerCase() || null)}
-                        className={`glass p-4 md:p-5 rounded-xl transition-all flex flex-col ${isInteractive ? 'cursor-pointer hover:bg-cyan-50 hover:border-cyan-500/50 group shadow-sm' : 'hover:bg-slate-50'}`}
+                        className={`glass p-3.5 md:p-4 rounded-xl transition-all flex flex-col ${isInteractive ? 'cursor-pointer hover:bg-cyan-50 hover:border-cyan-500/50 group shadow-sm' : 'hover:bg-slate-50'}`}
                       >
                         {label && <div className="text-cyan-700 font-bold text-sm md:text-base mb-1">{label}</div>}
-                        <div className="text-slate-800 font-medium text-xs sm:text-sm md:text-base leading-relaxed mb-3 whitespace-pre-line">{contentText}</div>
+                        <div className="text-slate-800 font-medium text-xs sm:text-sm md:text-base leading-relaxed mb-2 whitespace-pre-line">{contentText}</div>
                         {isInteractive && (
-                          <div className="mt-auto pt-2">
-                            <div className="glass p-3 rounded-xl border-cyan-500/30 bg-cyan-50 flex items-center justify-center gap-2 group-hover:bg-cyan-100 transition-colors">
-                              <Activity className="w-4 h-4 text-cyan-700" />
-                              <span className="text-[10px] font-bold text-cyan-700 uppercase tracking-wider">View {label} Diagram</span>
+                          <div className="mt-auto pt-1.5">
+                            <div className="glass p-2 sm:p-2.5 rounded-xl border-cyan-500/30 bg-cyan-50 flex items-center justify-center gap-2 group-hover:bg-cyan-100 transition-colors">
+                              <Activity className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-cyan-700" />
+                              <span className="text-[9px] sm:text-[10px] font-bold text-cyan-700 uppercase tracking-wider">View {label} Diagram</span>
                             </div>
-                            <div className="text-[8px] text-center mt-2 text-cyan-700/60 font-bold animate-pulse">Click to Open Visualization</div>
+                            <div className="text-[8px] text-center mt-1 text-cyan-700/60 font-bold animate-pulse">Click to Open Visualization</div>
                           </div>
                         )}
                       </motion.div>
@@ -393,17 +396,17 @@ export default function App() {
                   })}
                 </div>
                 {slide.notes && (
-                  <div className="mt-6 space-y-3">
+                  <div className="mt-3.5 space-y-2">
                     {slide.notes.map((note, i) => (
                       <motion.div
                         key={i}
                         initial={{ opacity: 0, x: -10 }}
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ delay: 0.3 + i * 0.1 }}
-                        className="flex items-start gap-3 p-4 glass border-l-4 border-l-cyan-600 bg-cyan-50/80 rounded-r-xl"
+                        className="flex items-start gap-2.5 p-3 glass border-l-4 border-l-cyan-600 bg-cyan-50/80 rounded-r-xl"
                       >
                         <Shield className="w-4 h-4 text-cyan-700 shrink-0 mt-0.5" />
-                        <p className="text-sm md:text-base text-slate-800 font-medium leading-relaxed italic">{note}</p>
+                        <p className="text-xs sm:text-sm text-slate-800 font-medium leading-relaxed italic">{note}</p>
                       </motion.div>
                     ))}
                   </div>
@@ -411,15 +414,15 @@ export default function App() {
               </div>
             ) : (
               /* ── CONTENT SLIDES: always two-column ── */
-              <div className="space-y-6 md:space-y-8">
+              <div className="space-y-4 md:space-y-6">
                 <div className="flex items-center gap-3">
                   <Icon className="w-6 h-6 md:w-8 md:h-8 text-cyan-700" />
                   <h2 className="text-2xl md:text-4xl font-display font-bold tracking-tight text-slate-900">{slide.title}</h2>
                 </div>
 
-                <div className="grid grid-cols-[7fr_3fr] w-full gap-4 md:gap-8 items-center">
+                <div className="grid grid-cols-1 md:grid-cols-[6fr_4fr] w-full gap-5 md:gap-8 items-center">
                   {/* Left column — bullet points */}
-                  <div className="space-y-3 md:space-y-4">
+                  <div className="space-y-2.5 md:space-y-3.5">
                     {slide.content.map((item, i) => {
                       const parts = item.split(': ');
                       const contentText = parts.length > 1 ? parts.slice(1).join(': ') : item;
@@ -435,7 +438,7 @@ export default function App() {
                             <div className="w-2 h-2 rounded-full bg-cyan-600 group-hover:scale-125 transition-transform" />
                             <div className="w-px h-full bg-slate-300 mt-1.5" />
                           </div>
-                          <div className="pb-2 md:pb-4">
+                          <div className="pb-1.5 md:pb-2.5">
                             <p className="text-xs sm:text-base md:text-lg text-slate-800 font-medium leading-relaxed">{contentText}</p>
                           </div>
                         </motion.div>
@@ -451,21 +454,21 @@ export default function App() {
                     className="flex justify-center items-center"
                   >
                     {slide.image ? (
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-cyan-500/10 blur-2xl rounded-full scale-150" />
+                      <div className="relative flex justify-center">
+                        <div className="absolute inset-0 bg-cyan-500/10 blur-2xl rounded-full scale-125" />
                         <img
                           src={slide.image}
                           alt={slide.title}
-                          className="relative w-[90px] sm:w-[140px] md:w-[220px] h-auto rounded-xl shadow-xl border border-slate-200 object-contain"
+                          className="relative w-auto max-w-full max-h-[260px] sm:max-h-[300px] md:max-h-[340px] rounded-2xl shadow-xl border border-slate-200 object-contain mx-auto"
                           referrerPolicy="no-referrer"
                         />
                       </div>
                     ) : (
-                      <div className="w-[90px] sm:w-[140px] md:w-[200px] aspect-square rounded-2xl glass border-2 border-dashed border-slate-200 flex flex-col items-center justify-center gap-2 text-center p-3">
-                        <div className="p-2 bg-slate-100 rounded-full">
-                          <ImageOff className="w-4 h-4 md:w-6 md:h-6 text-slate-300" />
+                      <div className="w-full max-w-[240px] sm:max-w-[280px] aspect-[4/3] max-h-[220px] rounded-2xl glass border-2 border-dashed border-slate-200 flex flex-col items-center justify-center gap-2 text-center p-3 mx-auto">
+                        <div className="p-2.5 bg-slate-100 rounded-full">
+                          <ImageOff className="w-5 h-5 text-slate-300" />
                         </div>
-                        <p className="text-[8px] md:text-[10px] font-mono uppercase tracking-widest text-slate-300 leading-relaxed">
+                        <p className="text-[10px] font-mono uppercase tracking-widest text-slate-300 leading-relaxed">
                           No image<br />uploaded
                         </p>
                       </div>
@@ -479,28 +482,28 @@ export default function App() {
       </main>
 
       {/* Footer / Controls */}
-      <footer className="relative z-20 p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 shrink-0">
-        <div className="flex gap-3 order-2 md:order-1">
+      <footer className="relative z-20 px-4 sm:px-6 md:px-8 py-2.5 sm:py-3 flex flex-row justify-between items-center gap-3 sm:gap-6 shrink-0 bg-white/70 backdrop-blur-md border-t border-slate-200/80 shadow-sm">
+        <div className="flex gap-2 sm:gap-3 shrink-0">
           <button
             onClick={prevSlide}
             disabled={currentSlide === 0}
-            className="p-3 md:p-4 glass rounded-full hover:bg-slate-200 disabled:opacity-20 disabled:cursor-not-allowed transition-all shadow-sm"
+            className="p-2 sm:p-2.5 md:p-3 glass rounded-full hover:bg-slate-200 disabled:opacity-20 disabled:cursor-not-allowed transition-all shadow-sm"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-5 h-5 md:w-6 md:h-6 text-slate-800" />
+            <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800" />
           </button>
           <button
             onClick={nextSlide}
             disabled={currentSlide === slides.length - 1}
-            className="p-3 md:p-4 glass rounded-full hover:bg-slate-200 disabled:opacity-20 disabled:cursor-not-allowed transition-all shadow-sm"
+            className="p-2 sm:p-2.5 md:p-3 glass rounded-full hover:bg-slate-200 disabled:opacity-20 disabled:cursor-not-allowed transition-all shadow-sm"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-5 h-5 md:w-6 md:h-6 text-slate-800" />
+            <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-slate-800" />
           </button>
         </div>
 
         {/* Progress Bar */}
-        <div className="flex-1 w-full max-w-md h-1.5 bg-slate-200 rounded-full overflow-hidden order-1 md:order-2">
+        <div className="flex-1 w-full max-w-xs sm:max-w-md h-1.5 bg-slate-200 rounded-full overflow-hidden">
           <motion.div
             className="h-full bg-cyan-600 shadow-[0_0_10px_rgba(6,182,212,0.5)]"
             initial={{ width: 0 }}
@@ -508,13 +511,13 @@ export default function App() {
           />
         </div>
 
-        <div className="hidden lg:flex items-center gap-6 font-mono text-[9px] uppercase tracking-widest text-slate-600 font-bold order-3">
+        <div className="hidden lg:flex items-center gap-4 sm:gap-6 font-mono text-[9px] uppercase tracking-widest text-slate-600 font-bold shrink-0">
           <div className="flex items-center gap-2">
-            <span className="px-1.5 py-0.5 border border-slate-200 rounded">SPACE</span>
+            <span className="px-1.5 py-0.5 border border-slate-200 rounded bg-white/60">SPACE</span>
             <span>Navigate</span>
           </div>
           <div className="w-px h-4 bg-slate-200" />
-          <span>Quantum_Presentation_System</span>
+          <span>Quantum_Presentation</span>
         </div>
       </footer>
 
